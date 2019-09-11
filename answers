@@ -13,3 +13,11 @@ nouvelle classe dont héritent Clinic et CommunityCenter. Cette classe a pour bu
 changements mais c'est globalement positif car cela m'a permis d'écrire la classe CommunityCenter en moins de 20 lignes.
 
 CommunityCenter a 5 comportements, il y a également 5 tests. Ce qui est logique, étant donné qu'un test unitaire doit tester un seul comportement.
+
+
+
+Etape 5 :
+
+J'ai ajouté 3 tests afin de vérifier que les patients avec gravité = 1 n'étaient pris en compte dans aucun des 3 services. Les autres comportements
+étaient déjà testés par les tests précédents. J'ai ajouté 2 lignes de code dans les classes Clinic et CommunityCenter pour y implémenter la
+condition. Une seule condition suffisait pour éviter que les patients avec gravité = 1 soient ajoutés aux listes de docteur et radiologie.

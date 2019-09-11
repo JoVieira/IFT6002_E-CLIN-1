@@ -57,4 +57,19 @@ public class CommunityCenterTest {
         communityCenter.triagePatient(patient2);
         assertEquals(communityCenter.nurseList.get(1), patient1);
     }
+
+    /*
+     *
+     * 4TH STEP
+     *
+     */
+
+    @Test
+    public final void gravity1PatientNotAddedToTheNurseList() {
+        CommunityCenter communityCenter = new CommunityCenter(TriageType.FIFO);
+        Patient patient = new Patient("John", 1, VisibleSymptom.SPRAIN);
+
+        communityCenter.triagePatient(patient);
+        assertFalse(communityCenter.nurseList.contains(patient));
+    }
 }

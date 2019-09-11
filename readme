@@ -1,0 +1,1 @@
+La partie <dependencies> du pom.xml de mon projet est différente de celle proposée sur le site du cours car cette dernière ne me permettait pas d'utiliser junit sur intelliJ.

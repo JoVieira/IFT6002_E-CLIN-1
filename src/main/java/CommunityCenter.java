@@ -10,11 +10,12 @@ public class CommunityCenter extends HealthCenter {
     }
 
     public void triagePatient(Patient patient) {
-        if(nurseTriageType.equals(TriageType.FIFO)) {
-            triageListFIFO(patient, nurseList);
-        }
-        else if(nurseTriageType.equals(TriageType.GRAVITY)) {
-            triageListGravity(patient, nurseList);
+        if(patient.gravity > 1) {
+            if (nurseTriageType.equals(TriageType.FIFO)) {
+                triageListFIFO(patient, nurseList);
+            } else if (nurseTriageType.equals(TriageType.GRAVITY)) {
+                triageListGravity(patient, nurseList);
+            }
         }
     }
 }

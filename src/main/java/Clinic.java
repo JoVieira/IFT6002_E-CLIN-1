@@ -22,19 +22,19 @@ public class Clinic extends HealthCenter {
     }
 
     public void triagePatient(Patient patient) {
-        if(doctorTriageType.equals(TriageType.FIFO)) {
-            triageListFIFO(patient, doctorList);
-        }
-        else if(doctorTriageType.equals(TriageType.GRAVITY)) {
-            triageListGravity(patient, doctorList);
-        }
-
-        if(patient.visibleSymptom == VisibleSymptom.BROKEN_BONE || patient.visibleSymptom == VisibleSymptom.SPRAIN) {
-            if(radiologyTriageType.equals(TriageType.FIFO)) {
-                triageListFIFO(patient, radiologyList);
+        if(patient.gravity > 1) {
+            if (doctorTriageType.equals(TriageType.FIFO)) {
+                triageListFIFO(patient, doctorList);
+            } else if (doctorTriageType.equals(TriageType.GRAVITY)) {
+                triageListGravity(patient, doctorList);
             }
-            else if(radiologyTriageType.equals(TriageType.GRAVITY)) {
-                triageListGravity(patient, radiologyList);
+
+            if (patient.visibleSymptom == VisibleSymptom.BROKEN_BONE || patient.visibleSymptom == VisibleSymptom.SPRAIN) {
+                if (radiologyTriageType.equals(TriageType.FIFO)) {
+                    triageListFIFO(patient, radiologyList);
+                } else if (radiologyTriageType.equals(TriageType.GRAVITY)) {
+                    triageListGravity(patient, radiologyList);
+                }
             }
         }
     }

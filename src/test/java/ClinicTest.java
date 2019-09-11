@@ -176,4 +176,28 @@ public class ClinicTest {
         clinic.triagePatient(patient2);
         assertEquals(clinic.radiologyList.get(1), patient1);
     }
+
+    /*
+     *
+     * 5TH STEP
+     *
+     */
+
+    @Test
+    public final void gravity1PatientNotAddedToTheDoctorList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 1, VisibleSymptom.SPRAIN);
+
+        clinic.triagePatient(patient);
+        assertFalse(clinic.doctorList.contains(patient));
+    }
+
+    @Test
+    public final void gravity1PatientNotAddedToTheRadiologyList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 1, VisibleSymptom.SPRAIN);
+
+        clinic.triagePatient(patient);
+        assertFalse(clinic.radiologyList.contains(patient));
+    }
 }
