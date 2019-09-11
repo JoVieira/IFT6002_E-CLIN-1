@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ClinicTest" time="0.051" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="CommunityCenterTest" time="0.001" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -62,19 +62,9 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="secondPatientWithTheFluIs2ndInTheDoctorList" classname="ClinicTest" time="0.004"/>
-  <testcase name="doctorListIsInitiallyEmpty" classname="ClinicTest" time="0"/>
-  <testcase name="secondPatientWithTheFluNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="uniquePatientWithASprainIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
-  <testcase name="secondPriorityPatientWithABrokenBoneIs1stInTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="secondPriorityPatientWithTheFluNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="uniquePatientWithASprainIs1stInTheRadiologyList" classname="ClinicTest" time="0.001"/>
-  <testcase name="uniquePatientWithMigraineIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
-  <testcase name="radiologyListIsInitiallyEmpty" classname="ClinicTest" time="0"/>
-  <testcase name="uniquePatientWithMigraineIsNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="secondPriorityPatientWithTheFluIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
-  <testcase name="secondPatientWithABrokenBoneIs2ndInTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="firstPatientIsNow2ndInTheRadiologyList" classname="ClinicTest" time="0"/>
-  <testcase name="secondPriorityPatientWithABrokenBoneIs2ndInTheRadiologyList" classname="ClinicTest" time="0.001"/>
-  <testcase name="firstPatientIsNow2ndInTheDoctorList" classname="ClinicTest" time="0"/>
+  <testcase name="secondPatientIs2ndInTheNurseListUsingFIFO" classname="CommunityCenterTest" time="0.001"/>
+  <testcase name="uniquePatientIs1stInTheNurseList" classname="CommunityCenterTest" time="0"/>
+  <testcase name="nurseListIsInitiallyEmpty" classname="CommunityCenterTest" time="0"/>
+  <testcase name="firstPatientIsNow2ndInTheNurseListUsingGravity" classname="CommunityCenterTest" time="0"/>
+  <testcase name="secondPriorityPatientIs1stInTheNurseListUsingGravity" classname="CommunityCenterTest" time="0"/>
 </testsuite>

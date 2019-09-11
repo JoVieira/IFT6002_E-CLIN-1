@@ -3,3 +3,13 @@ Etape 3 :
 16 lignes ont dû être modifiées, pour la création d'une nouvelle méthode de tri par gravité pour la radiologie et pour l'ajout de conditions.
 Ce nombre est logique étant donné ma méthode de procéder étape par étape. Il aurait pu être réduit (voire même nul) si j'avais anticipé le
 fait de pouvoir trier le liste d'attente de la radiologie par gravité à l'étape précédente.
+
+
+
+Etape 4 :
+
+36 lignes ont été modifiées (la plupart ont été supprimées) de la classe Clinic, ce qui m'a permis de généraliser le code afin de créer une
+nouvelle classe dont héritent Clinic et CommunityCenter. Cette classe a pour but de généraliser les méthodes de tri. Cela fait beaucoup de
+changements mais c'est globalement positif car cela m'a permis d'écrire la classe CommunityCenter en moins de 20 lignes.
+
+CommunityCenter a 5 comportements, il y a également 5 tests. Ce qui est logique, étant donné qu'un test unitaire doit tester un seul comportement.

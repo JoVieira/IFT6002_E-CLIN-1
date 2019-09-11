@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Clinic {
+public class Clinic extends HealthCenter {
 
     public ArrayList<Patient> doctorList;
     public ArrayList<Patient> radiologyList;
@@ -23,45 +23,19 @@ public class Clinic {
 
     public void triagePatient(Patient patient) {
         if(doctorTriageType.equals(TriageType.FIFO)) {
-            triageDoctorListFIFO(patient);
+            triageListFIFO(patient, doctorList);
         }
         else if(doctorTriageType.equals(TriageType.GRAVITY)) {
-            triageDoctorListGravity(patient);
+            triageListGravity(patient, doctorList);
         }
 
         if(patient.visibleSymptom == VisibleSymptom.BROKEN_BONE || patient.visibleSymptom == VisibleSymptom.SPRAIN) {
             if(radiologyTriageType.equals(TriageType.FIFO)) {
-                triageRadiologyListFIFO(patient);
+                triageListFIFO(patient, radiologyList);
             }
             else if(radiologyTriageType.equals(TriageType.GRAVITY)) {
-                triageRadiologyListGravity(patient);
+                triageListGravity(patient, radiologyList);
             }
-        }
-    }
-
-    public void triageDoctorListFIFO(Patient patient) {
-        doctorList.add(patient);
-    }
-
-    public void triageRadiologyListFIFO(Patient patient) {
-        radiologyList.add(patient);
-    }
-
-    public void triageDoctorListGravity(Patient patient) {
-        if(patient.gravity > 5) {
-            doctorList.add(0, patient);
-        }
-        else {
-            doctorList.add(patient);
-        }
-    }
-
-    public void triageRadiologyListGravity(Patient patient) {
-        if(patient.gravity > 5) {
-            radiologyList.add(0, patient);
-        }
-        else {
-            radiologyList.add(patient);
         }
     }
 }
