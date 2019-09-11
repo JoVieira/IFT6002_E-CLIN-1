@@ -3,6 +3,15 @@ import static org.junit.Assert.*;
 
 public class ClinicTest {
 
+    /*
+     *
+     * 1ST STEP
+     *
+     * DOCTOR TRIAGE TYPE: FIFO
+     * RADIOLOGY TRIAGE TYPE: FIFO
+     *
+     */
+
     @Test
     public final void doctorListIsInitiallyEmpty() {
         Clinic clinic = new Clinic();
@@ -78,6 +87,59 @@ public class ClinicTest {
         Clinic clinic = new Clinic();
         Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
         Patient patient2 = new Patient("Mary", 3, VisibleSymptom.BROKEN_BONE);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertEquals(clinic.radiologyList.get(1), patient2);
+    }
+
+    /*
+     *
+     * 2ND STEP
+     *
+     * DOCTOR TRIAGE TYPE: GRAVITY
+     * RADIOLOGY TRIAGE TYPE: FIFO
+     *
+     */
+
+    @Test
+    public final void secondPriorityPatientWithTheFluIs1stInTheDoctorList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertEquals(clinic.doctorList.get(0), patient2);
+    }
+
+    @Test
+    public final void firstPatientIsNow2ndInTheDoctorList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertEquals(clinic.doctorList.get(1), patient1);
+    }
+
+    @Test
+    public final void secondPriorityPatientWithTheFluNotAddedToTheRadiologyList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertFalse(clinic.radiologyList.contains(patient2));
+    }
+
+    @Test
+    public final void secondPriorityPatientWithABrokenBoneIs2ndInTheRadiologyList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);

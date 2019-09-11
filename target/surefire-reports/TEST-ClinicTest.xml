@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ClinicTest" time="0.07" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ClinicTest" time="0.093" tests="13" errors="0" skipped="0" failures="0">
   <properties>
     <property name="gopherProxySet" value="false"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib"/>
-    <property name="sun.java.command" value="/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire/surefirebooter5412829491325150921.jar /Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire 2019-09-11T10-16-08_234-jvmRun1 surefire8188860132348968099tmp surefire_06229405449208327046tmp"/>
+    <property name="sun.java.command" value="/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire/surefirebooter6403602658242916701.jar /Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire 2019-09-11T10-49-42_663-jvmRun1 surefire1467211303508301422tmp surefire_08173627088214723381tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="surefire.test.class.path" value="/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/test-classes:/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/classes:/Users/joel/.m2/repository/junit/junit/4.12/junit-4.12.jar:/Users/joel/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire/surefirebooter5412829491325150921.jar"/>
+    <property name="surefire.real.class.path" value="/Users/joel/Documents/GitHub/IFT6002_E-CLIN-1/target/surefire/surefirebooter6403602658242916701.jar"/>
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
@@ -62,13 +62,17 @@
     <property name="java.class.version" value="52.0"/>
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="secondPatientWithTheFluIs2ndInTheDoctorList" classname="ClinicTest" time="0.003"/>
-  <testcase name="doctorListIsInitiallyEmpty" classname="ClinicTest" time="0.001"/>
+  <testcase name="secondPatientWithTheFluIs2ndInTheDoctorList" classname="ClinicTest" time="0.009"/>
+  <testcase name="doctorListIsInitiallyEmpty" classname="ClinicTest" time="0"/>
   <testcase name="secondPatientWithTheFluNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
   <testcase name="uniquePatientWithASprainIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
+  <testcase name="secondPriorityPatientWithTheFluNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
   <testcase name="uniquePatientWithASprainIs1stInTheRadiologyList" classname="ClinicTest" time="0"/>
   <testcase name="uniquePatientWithMigraineIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
   <testcase name="radiologyListIsInitiallyEmpty" classname="ClinicTest" time="0"/>
   <testcase name="uniquePatientWithMigraineIsNotAddedToTheRadiologyList" classname="ClinicTest" time="0"/>
+  <testcase name="secondPriorityPatientWithTheFluIs1stInTheDoctorList" classname="ClinicTest" time="0"/>
   <testcase name="secondPatientWithABrokenBoneIs2ndInTheRadiologyList" classname="ClinicTest" time="0.001"/>
+  <testcase name="secondPriorityPatientWithABrokenBoneIs2ndInTheRadiologyList" classname="ClinicTest" time="0"/>
+  <testcase name="firstPatientIsNow2ndInTheDoctorList" classname="ClinicTest" time="0"/>
 </testsuite>
