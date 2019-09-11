@@ -1,0 +1,5 @@
+Etape 3 :
+
+16 lignes ont dû être modifiées, pour la création d'une nouvelle méthode de tri par gravité pour la radiologie et pour l'ajout de conditions.
+Ce nombre est logique étant donné ma méthode de procéder étape par étape. Il aurait pu être réduit (voire même nul) si j'avais anticipé le
+fait de pouvoir trier le liste d'attente de la radiologie par gravité à l'étape précédente.

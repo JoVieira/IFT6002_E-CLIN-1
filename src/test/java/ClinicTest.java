@@ -145,4 +145,35 @@ public class ClinicTest {
         clinic.triagePatient(patient2);
         assertEquals(clinic.radiologyList.get(1), patient2);
     }
+
+    /*
+     *
+     * 3RD STEP
+     *
+     * DOCTOR TRIAGE TYPE: GRAVITY
+     * RADIOLOGY TRIAGE TYPE: GRAVITY
+     *
+     */
+
+    @Test
+    public final void secondPriorityPatientWithABrokenBoneIs1stInTheRadiologyList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.GRAVITY);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertEquals(clinic.radiologyList.get(0), patient2);
+    }
+
+    @Test
+    public final void firstPatientIsNow2ndInTheRadiologyList() {
+        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.GRAVITY);
+        Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
+        Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
+
+        clinic.triagePatient(patient1);
+        clinic.triagePatient(patient2);
+        assertEquals(clinic.radiologyList.get(1), patient1);
+    }
 }

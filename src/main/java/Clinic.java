@@ -30,7 +30,12 @@ public class Clinic {
         }
 
         if(patient.visibleSymptom == VisibleSymptom.BROKEN_BONE || patient.visibleSymptom == VisibleSymptom.SPRAIN) {
-            triageRadiologyListFIFO(patient);
+            if(radiologyTriageType.equals(TriageType.FIFO)) {
+                triageRadiologyListFIFO(patient);
+            }
+            else if(radiologyTriageType.equals(TriageType.GRAVITY)) {
+                triageRadiologyListGravity(patient);
+            }
         }
     }
 
@@ -48,6 +53,15 @@ public class Clinic {
         }
         else {
             doctorList.add(patient);
+        }
+    }
+
+    public void triageRadiologyListGravity(Patient patient) {
+        if(patient.gravity > 5) {
+            radiologyList.add(0, patient);
+        }
+        else {
+            radiologyList.add(patient);
         }
     }
 }
