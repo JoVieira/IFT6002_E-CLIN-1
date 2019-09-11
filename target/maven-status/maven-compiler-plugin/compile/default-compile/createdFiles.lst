@@ -2,5 +2,4 @@ VisibleSymptom.class
 TriageType.class
 Clinic.class
 HealthCenter.class
-CommunityCenter.class
 Patient.class
