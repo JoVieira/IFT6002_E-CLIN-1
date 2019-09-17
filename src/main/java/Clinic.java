@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Clinic extends HealthCenter {
 
     public HealthDepartment doctor;

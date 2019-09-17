@@ -3,3 +3,4 @@ Patient.class
 HealthDepartment.class
 TriageType.class
 HealthCenter.class
+CommunityCenter.class
