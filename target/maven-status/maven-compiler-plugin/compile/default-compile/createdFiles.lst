@@ -1,5 +1,5 @@
 VisibleSymptom.class
-TriageType.class
-Clinic.class
-HealthCenter.class
 Patient.class
+HealthDepartment.class
+TriageType.class
+HealthCenter.class

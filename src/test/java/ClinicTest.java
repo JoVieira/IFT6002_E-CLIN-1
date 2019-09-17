@@ -15,13 +15,13 @@ public class ClinicTest {
     @Test
     public final void doctorListIsInitiallyEmpty() {
         Clinic clinic = new Clinic();
-        assertTrue(clinic.doctorList.isEmpty());
+        assertTrue(clinic.doctor.waitingList.isEmpty());
     }
 
     @Test
     public final void radiologyListIsInitiallyEmpty() {
         Clinic clinic = new Clinic();
-        assertTrue(clinic.radiologyList.isEmpty());
+        assertTrue(clinic.radiology.waitingList.isEmpty());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ClinicTest {
         Patient patient = new Patient("John", 2, VisibleSymptom.MIGRAINE);
 
         clinic.triagePatient(patient);
-        assertEquals(clinic.doctorList.get(0), patient);
+        assertEquals(clinic.doctor.waitingList.get(0), patient);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ClinicTest {
         Patient patient = new Patient("John", 2, VisibleSymptom.MIGRAINE);
 
         clinic.triagePatient(patient);
-        assertTrue(clinic.radiologyList.isEmpty());
+        assertTrue(clinic.radiology.waitingList.isEmpty());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class ClinicTest {
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.doctorList.get(1), patient2);
+        assertEquals(clinic.doctor.waitingList.get(1), patient2);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ClinicTest {
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertFalse(clinic.radiologyList.contains(patient2));
+        assertFalse(clinic.radiology.waitingList.contains(patient2));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ClinicTest {
         Patient patient = new Patient("John", 2, VisibleSymptom.SPRAIN);
 
         clinic.triagePatient(patient);
-        assertEquals(clinic.doctorList.get(0), patient);
+        assertEquals(clinic.doctor.waitingList.get(0), patient);
     }
 
     @Test
@@ -79,7 +79,7 @@ public class ClinicTest {
         Patient patient = new Patient("John", 2, VisibleSymptom.SPRAIN);
 
         clinic.triagePatient(patient);
-        assertEquals(clinic.radiologyList.get(0), patient);
+        assertEquals(clinic.radiology.waitingList.get(0), patient);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class ClinicTest {
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.radiologyList.get(1), patient2);
+        assertEquals(clinic.radiology.waitingList.get(1), patient2);
     }
 
     /*
@@ -104,46 +104,54 @@ public class ClinicTest {
 
     @Test
     public final void secondPriorityPatientWithTheFluIs1stInTheDoctorList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingFIFO();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.doctorList.get(0), patient2);
+        assertEquals(clinic.doctor.waitingList.get(0), patient2);
     }
 
     @Test
     public final void firstPatientIsNow2ndInTheDoctorList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingFIFO();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.doctorList.get(1), patient1);
+        assertEquals(clinic.doctor.waitingList.get(1), patient1);
     }
 
     @Test
     public final void secondPriorityPatientWithTheFluNotAddedToTheRadiologyList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingFIFO();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.CHEST_PAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.FLU);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertFalse(clinic.radiologyList.contains(patient2));
+        assertFalse(clinic.radiology.waitingList.contains(patient2));
     }
 
     @Test
     public final void secondPriorityPatientWithABrokenBoneIs2ndInTheRadiologyList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.FIFO);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingFIFO();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.radiologyList.get(1), patient2);
+        assertEquals(clinic.radiology.waitingList.get(1), patient2);
     }
 
     /*
@@ -157,24 +165,28 @@ public class ClinicTest {
 
     @Test
     public final void secondPriorityPatientWithABrokenBoneIs1stInTheRadiologyList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.GRAVITY);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingGravity();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.radiologyList.get(0), patient2);
+        assertEquals(clinic.radiology.waitingList.get(0), patient2);
     }
 
     @Test
     public final void firstPatientIsNow2ndInTheRadiologyList() {
-        Clinic clinic = new Clinic(TriageType.GRAVITY, TriageType.GRAVITY);
+        HealthDepartment doctor = new HealthDepartmentUsingGravity();
+        HealthDepartment radiology = new HealthDepartmentUsingGravity();
+        Clinic clinic = new Clinic(doctor, radiology);
         Patient patient1 = new Patient("John", 2, VisibleSymptom.SPRAIN);
         Patient patient2 = new Patient("Mary", 7, VisibleSymptom.BROKEN_BONE);
 
         clinic.triagePatient(patient1);
         clinic.triagePatient(patient2);
-        assertEquals(clinic.radiologyList.get(1), patient1);
+        assertEquals(clinic.radiology.waitingList.get(1), patient1);
     }
 
     /*
@@ -189,7 +201,7 @@ public class ClinicTest {
         Patient patient = new Patient("John", 1, VisibleSymptom.SPRAIN);
 
         clinic.triagePatient(patient);
-        assertFalse(clinic.doctorList.contains(patient));
+        assertFalse(clinic.doctor.waitingList.contains(patient));
     }
 
     @Test
@@ -198,6 +210,48 @@ public class ClinicTest {
         Patient patient = new Patient("John", 1, VisibleSymptom.SPRAIN);
 
         clinic.triagePatient(patient);
-        assertFalse(clinic.radiologyList.contains(patient));
+        assertFalse(clinic.radiology.waitingList.contains(patient));
+    }
+
+    /*
+     *
+     * E-CLIN-2
+     *
+     */
+
+    @Test
+    public void whenTriagingPatient_thenPatientIsAddedToTheDoctorWaitingList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 3, VisibleSymptom.FLU);
+
+        clinic.triagePatient(patient);
+        assertTrue(clinic.doctor.waitingList.contains(patient));
+    }
+
+    @Test
+    public void whenTriagingPatientWithTheFlu_thenPatientIsNotAddedToTheRadiologyWaitingList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 3, VisibleSymptom.FLU);
+
+        clinic.triagePatient(patient);
+        assertFalse(clinic.radiology.waitingList.contains(patient));
+    }
+
+    @Test
+    public void whenTriagingPatientWithABrokenBone_thenPatientIsAddedToTheRadiologyWaitingList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 3, VisibleSymptom.BROKEN_BONE);
+
+        clinic.triagePatient(patient);
+        assertTrue(clinic.radiology.waitingList.contains(patient));
+    }
+
+    @Test
+    public void whenTriagingPatientWithASprain_thenPatientIsAddedToTheRadiologyWaitingList() {
+        Clinic clinic = new Clinic();
+        Patient patient = new Patient("John", 3, VisibleSymptom.SPRAIN);
+
+        clinic.triagePatient(patient);
+        assertTrue(clinic.radiology.waitingList.contains(patient));
     }
 }
